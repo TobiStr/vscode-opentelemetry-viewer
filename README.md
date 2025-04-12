@@ -1,7 +1,7 @@
 # OpenTelemetry Log Viewer for VS Code
 
 [![Version](https://img.shields.io/github/v/tag/TobiStr/vscode-opentelemetry-viewer?label=Version&sort=semver)](https://github.com/TobiStr/vscode-opentelemetry-viewer/releases)
-[![Deployment](https://github.com/TobiStr/vscode-opentelemetry-viewer/actions/workflows/publish.yml/badge.svg?branch=main)](https://github.com/TobiStr/vscode-opentelemetry-viewer/actions/workflows/publish.yml)
+[![Deployment](https://github.com/TobiStr/vscode-opentelemetry-viewer/actions/workflows/publish.yaml/badge.svg?branch=main)](https://github.com/TobiStr/vscode-opentelemetry-viewer/actions/workflows/publish.yml)
 
 [![Repository](https://img.shields.io/badge/Repository-TobiStr%2Fvscode--opentelemetry--viewer-orange?logo=github)](https://github.com/TobiStr/vscode-opentelemetry-viewer)
 
