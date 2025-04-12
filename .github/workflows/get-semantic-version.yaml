@@ -1,0 +1,42 @@
+name: ⚙️ Calculate the current Version
+
+on:
+  workflow_call:
+    inputs:
+      runner:
+        description: "Specify the runner (e.g., ubuntu-latest, self-hosted)"
+        type: string
+        required: false
+        default: "ubuntu-latest"
+    outputs:
+      version:
+        description: "Generated Semantic Version"
+        value: ${{ jobs.versioning.outputs.version }}
+
+jobs:
+  versioning:
+    runs-on: ${{ inputs.runner }}
+    outputs:
+      version: ${{ steps.gitversion.outputs.SemVer }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v3.1.11
+        with:
+          versionSpec: "6.0.x"
+
+      - name: Determine Version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v3.1.11
+        with:
+          useConfigFile: true
+          configFilePath: "GitVersion.yml"
+
+      - name: Print Version to Summary
+        run: |
+          echo "### 🔖 GitVersion" >> $GITHUB_STEP_SUMMARY
+          echo "**Determined Version:** ${{ steps.gitversion.outputs.SemVer }}" >> $GITHUB_STEP_SUMMARY

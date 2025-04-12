@@ -73,6 +73,12 @@ src/
 
 ---
 
+## ⚙️ Automatic Versioning
+
+This project features automatic versioning and deployment. More on this can be found here: [TobiStr/branching-and-versioning](https://github.com/TobiStr/branching-and-versioning)
+
+---
+
 ## 🛡 License & Notice
 
 - [APACHE 2.0](LICENSE)

@@ -1,0 +1,31 @@
+name: 🤖 Add Tag to Release
+
+on:
+  push:
+    branches:
+      - develop
+      - "release/*"
+      - "main"
+
+jobs:
+  determine-version:
+    name: Determine Semantic Version
+    uses: ./.github/workflows/get-semantic-version.yaml
+
+  create-tag:
+    name: Create Git Tag
+    needs: determine-version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create Git tag
+        env:
+          VERSION: ${{ needs.determine-version.outputs.version }}
+        run: |
+          echo "Tagging version: $VERSION"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag "$VERSION"
+          git push origin "$VERSION"
