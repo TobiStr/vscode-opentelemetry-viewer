@@ -1,10 +1,17 @@
 # OpenTelemetry Log Viewer for VS Code
 
+[![Version](https://img.shields.io/github/v/tag/TobiStr/vscode-opentelemetry-viewer?label=Version&sort=semver)](https://github.com/TobiStr/vscode-opentelemetry-viewer/releases)
+[![Deployment](https://github.com/TobiStr/vscode-opentelemetry-viewer/actions/workflows/publish.yaml/badge.svg?branch=main)](https://github.com/TobiStr/vscode-opentelemetry-viewer/actions/workflows/publish.yml)
+
+[![Repository](https://img.shields.io/badge/Repository-TobiStr%2Fvscode--opentelemetry--viewer-orange?logo=github)](https://github.com/TobiStr/vscode-opentelemetry-viewer)
+
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/Tobias-Streng.vscode-opentelemetry-viewer?label=VS%20Code%20Marketplace&color=2ea44f)](https://marketplace.visualstudio.com/items?itemName=Tobias-Streng.vscode-opentelemetry-viewer)
+
 A simple, interactive VS Code extension for exploring [OpenTelemetry](https://opentelemetry.io/) logs using a smart, filterable data grid.
 
-Since there is no solution to view those logs offline?! Here is a simple viewer extension for VSCode:
+Since there is no solution to view those logs offline?! Here is a simple viewer extension for VS Code:
 
-![screenshot](./docs/screenshot_1.png)
+![screenshot](https://raw.githubusercontent.com/TobiStr/vscode-opentelemetry-viewer/main/docs/screenshot_1.png)
 
 ---
 
@@ -12,7 +19,7 @@ Since there is no solution to view those logs offline?! Here is a simple viewer 
 
 - 📊 Displays structured JSON logs in a dynamic AG Grid table
 - 🔍 Sort, filter, and search across all columns
-- 🚀 One-click toolbar button to open the viewer
+- 🚀 One-click toolbar button **"OpenTelemetry Viewer"** to open the viewer (present when viewing `.log` or `.jsonl` files)
 - 🧠 Validates file content before rendering the grid
 - 🔐 Safe Content Security Policy (CSP) with inline script and style support
 
@@ -20,25 +27,19 @@ Since there is no solution to view those logs offline?! Here is a simple viewer 
 
 ## 📦 Installation
 
-This extension is currently local-only. To try it out:
+Install from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Tobias-Streng.vscode-opentelemetry-viewer) or search for "OpenTelemetry Log Viewer" in the Extensions sidebar in VS Code.
 
-```bash
-git clone https://github.com/TobiStr/vscode-opentelemetry-viewer.git
-cd vscode-opentelemetry-viewer
-npm install
-npm run build
-code .
-```
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/Tobias-Streng.vscode-opentelemetry-viewer?label=VS%20Code%20Marketplace&color=2ea44f)](https://marketplace.visualstudio.com/items?itemName=Tobias-Streng.vscode-opentelemetry-viewer)
 
-Then press `F5` in VS Code to launch the Extension Development Host.
 
 ---
 
 ## 🪵 Usage
 
 1. Open any `.log` or `.jsonl` file that contains OpenTelemetry logs in JSON Lines format.
-2. Click the **"OpenTelemetry Viewer"** button in the editor toolbar. (Alternatively use the `OpenTelemetry Viewer` command in your command menu `STRG+SHIFT+P`)
-3. View your logs in a rich, sortable grid!
+2. Click the **"OpenTelemetry Viewer"** button in the editor toolbar (top-right). 
+3. You can also run the command `OpenTelemetry Viewer` from the command palette (`Ctrl+Shift+P`).
+4. View your logs in a rich, sortable grid!
 
 > Log entries must be one JSON object per line (JSONL).
 
@@ -46,7 +47,7 @@ Then press `F5` in VS Code to launch the Extension Development Host.
 
 ## 📁 File Types
 
-When these files are open, you will see a button `OpenTelemetry Viewer` on the top right of your editor:
+This extension automatically activates and shows the **OpenTelemetry Viewer** button when working with:
 
 - `.log`
 - `.jsonl`
@@ -81,7 +82,7 @@ This project features automatic versioning and deployment. More on this can be f
 
 ## 🛡 License & Notice
 
-- [APACHE 2.0](LICENSE)
+- [Apache 2.0 License](LICENSE)
 - [NOTICE](NOTICE)
 
 ---

@@ -7,8 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Color indication for warnings and errors
+
+## [1.1.1] - 2025-04-12
+
+### Added
+
+- Improved Readme
+
 ## [1.0.0] - 2025-04-12
 
 ### Added
 
 - Initial Implementation of the vscode extension with Vite, React and AG-Grid to render, filter and sort OpenTelemetry logs inside VSCode in a human readable style.
+- Vite as base
+- React for rendering the webview
+- AG Grid for displaying the log in a grid
