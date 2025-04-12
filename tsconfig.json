@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"target": "ES2022",
+		"module": "NodeNext",
+		"lib": [
+			"ES2022"
+		],
+		"moduleResolution": "nodenext",
+		"rootDir": "src",
+		"outDir": "dist",
+		"strict": true,
+		"types": [
+			"node"
+		],
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true
+	},
+	"include": [
+		"src/extension.ts"
+	]
+}

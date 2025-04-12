@@ -1,0 +1,79 @@
+{
+  "name": "vscode-opentelemetry-viewer",
+  "displayName": "OpenTelemetry Log Viewer",
+  "description": "Simple grid viewer for reading open telemetry logs",
+  "publisher": "TobiStr",
+  "license": "Apache-2.0",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TobiStr/vscode-opentelemetry-viewer"
+  },
+  "bugs": {
+    "url": "https://github.com/TobiStr/vscode-opentelemetry-viewer/issues"
+  },
+  "homepage": "https://github.com/TobiStr/vscode-opentelemetry-viewer#readme",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:vscode-opentelemetry-viewer.showLogs"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscode-opentelemetry-viewer.showLogs",
+        "title": "OpenTelemetry Viewer"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "when": "resourceExtname == .log || resourceExtname == .jsonl",
+          "command": "vscode-opentelemetry-viewer.showLogs",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "compile": "tsc -p ./",
+    "build:webview": "vite build",
+    "dev:webview": "vite",
+    "build": "npm run compile && npm run build:webview",
+    "watch": "tsc -w -p ./",
+    "compile-tests": "tsc -p ./",
+    "watch-tests": "tsc -p ./ -w",
+    "pretest": "npm run compile-tests && npm run lint",
+    "lint": "eslint src",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.17.30",
+    "@types/react": "^19.1.1",
+    "@types/react-dom": "^19.1.2",
+    "@types/vscode": "^1.99.0",
+    "@typescript-eslint/eslint-plugin": "^8.28.0",
+    "@typescript-eslint/parser": "^8.28.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.23.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3",
+    "vite": "^6.2.6"
+  },
+  "dependencies": {
+    "ag-grid-community": "^33.2.3",
+    "ag-grid-react": "^33.2.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "vscode-opentelemetry-viewer": "file:"
+  }
+}
