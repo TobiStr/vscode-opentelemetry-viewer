@@ -1,0 +1,1 @@
+# vscode-opentelemetry-viewer
