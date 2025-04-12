@@ -1,8 +1,11 @@
 # OpenTelemetry Log Viewer for VS Code
 
-[![Version](https://img.shields.io/github/v/tag/TobiStr/vscode-opentelemetry-viewer?label=version&sort=semver)](https://github.com/TobiStr/vscode-opentelemetry-viewer/releases)
+[![Version](https://img.shields.io/github/v/tag/TobiStr/vscode-opentelemetry-viewer?label=Version&sort=semver)](https://github.com/TobiStr/vscode-opentelemetry-viewer/releases)
+[![Deployment](https://github.com/TobiStr/vscode-opentelemetry-viewer/actions/workflows/publish.yml/badge.svg?branch=main)](https://github.com/TobiStr/vscode-opentelemetry-viewer/actions/workflows/publish.yml)
 
-[![Deployment](https://github.com/TobiStr/vscode-opentelemetry-viewer/actions/workflows/publish.yml/badge.svg)](https://github.com/TobiStr/vscode-opentelemetry-viewer/actions/workflows/publish.yml)
+[![Repository](https://img.shields.io/badge/Repository-TobiStr%2Fvscode--opentelemetry--viewer-orange?logo=github)](https://github.com/TobiStr/vscode-opentelemetry-viewer)
+
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/Tobias-Streng.vscode-opentelemetry-viewer?label=VS%20Code%20Marketplace&color=2ea44f)](https://marketplace.visualstudio.com/items?itemName=Tobias-Streng.vscode-opentelemetry-viewer)
 
 A simple, interactive VS Code extension for exploring [OpenTelemetry](https://opentelemetry.io/) logs using a smart, filterable data grid.
 
@@ -25,6 +28,9 @@ Since there is no solution to view those logs offline?! Here is a simple viewer 
 ## 📦 Installation
 
 Install from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Tobias-Streng.vscode-opentelemetry-viewer) or search for "OpenTelemetry Log Viewer" in the Extensions sidebar in VS Code.
+
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/Tobias-Streng.vscode-opentelemetry-viewer?label=VS%20Code%20Marketplace&color=2ea44f)](https://marketplace.visualstudio.com/items?itemName=Tobias-Streng.vscode-opentelemetry-viewer)
+
 
 ---
 
