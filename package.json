@@ -2,9 +2,9 @@
   "name": "vscode-opentelemetry-viewer",
   "displayName": "OpenTelemetry Log Viewer",
   "description": "Simple grid viewer for reading open telemetry logs",
-  "publisher": "TobiStr",
+  "publisher": "Tobias-Streng",
   "license": "Apache-2.0",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/TobiStr/vscode-opentelemetry-viewer"
@@ -13,6 +13,24 @@
     "url": "https://github.com/TobiStr/vscode-opentelemetry-viewer/issues"
   },
   "homepage": "https://github.com/TobiStr/vscode-opentelemetry-viewer#readme",
+  "icon": "docs/icon.png",
+  "keywords": [
+    "open",
+    "telemetry",
+    "opentele",
+    "opentelemetry",
+    "logs",
+    "log",
+    "log viewer",
+    "jsonl",
+    "observability",
+    "json",
+    "json viewer"
+  ],
+  "galleryBanner": {
+    "color": "#282c34",
+    "theme": "dark"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
