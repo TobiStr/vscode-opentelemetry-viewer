@@ -7,7 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+-
+
+## [1.2.0] - 2025-04-18
+
+### Added
+
+- Ignore non parseable lines
+- Make the parsing way more tolerant
 - Color indication for warnings and errors
+- Autosize Columns
+- Columns are now hideable
 
 ## [1.1.1] - 2025-04-12
 
