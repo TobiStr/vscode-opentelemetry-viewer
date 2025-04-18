@@ -39,12 +39,24 @@ export function activate(context: vscode.ExtensionContext) {
         logData = rawData
           .split("\n")
           .filter((line) => line.trim())
-          .map(line => {
-            const parsed = JSON.parse(line);
-            if (parsed.attributes && typeof parsed.attributes === 'object') {
-              parsed.attributes = JSON.stringify(parsed.attributes, null, 2);
+          .map((line, index) => {
+            try {
+              const parsed = JSON.parse(line);
+
+              const flat = flattenObject(parsed);
+
+              return {
+                ...flat,
+                lineNumber: index + 1,
+              };
+            } catch (error) {
+              return {
+                timestamp: new Date().toISOString(),
+                severity: "UNPARSEABLE",
+                message: line,
+                lineNumber: index + 1,
+              };
             }
-            return parsed;
           });
       } catch (error) {
         vscode.window.showErrorMessage(
@@ -85,7 +97,11 @@ export function activate(context: vscode.ExtensionContext) {
                  style-src 'self' ${panel.webview.cspSource} 'unsafe-inline';
                  font-src ${panel.webview.cspSource} data:;
                  img-src ${panel.webview.cspSource} data:;">
-      ${cssUri ? `<link rel="stylesheet" href="${cssUri}" nonce="${nonce}" />` : ''}
+      ${
+        cssUri
+          ? `<link rel="stylesheet" href="${cssUri}" nonce="${nonce}" />`
+          : ""
+      }
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>OpenTelemetry Logs</title>
     </head>
@@ -113,4 +129,35 @@ export function deactivate() {}
 
 function getNonce() {
   return [...Array(32)].map(() => Math.random().toString(36)[2]).join("");
+}
+
+function flattenObject(
+  obj: any,
+  prefix = "",
+  result: Record<string, any> = {},
+  depth = 0,
+  maxDepth = 5
+): Record<string, any> {
+  try {
+    if (depth > maxDepth) {
+      result[prefix || "root"] = JSON.stringify(obj, null, 2);
+      return result;
+    }
+
+    for (const [key, value] of Object.entries(obj)) {
+      const newKey = prefix ? `${prefix}.${key}` : key;
+
+      if (value && typeof value === "object" && !Array.isArray(value)) {
+        flattenObject(value, newKey, result, depth + 1, maxDepth);
+      } else {
+        result[newKey] = value;
+      }
+    }
+
+    return result;
+  } catch (error) {
+    return {
+      [prefix || "root"]: JSON.stringify(obj, null, 2),
+    };
+  }
 }
