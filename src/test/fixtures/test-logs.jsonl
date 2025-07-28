@@ -1,0 +1,6 @@
+{"timestamp": "2024-01-15T10:30:00Z", "level": "info", "message": "Application started successfully", "service": "web-server", "trace_id": "abc123"}
+{"timestamp": "2024-01-15T10:30:05Z", "level": "debug", "message": "Processing user request", "service": "web-server", "user_id": "user123", "trace_id": "def456"}
+{"timestamp": "2024-01-15T10:30:10Z", "level": "warn", "message": "High memory usage detected", "service": "web-server", "memory_usage": "85%", "trace_id": "ghi789"}
+{"timestamp": "2024-01-15T10:30:15Z", "level": "error", "message": "Database connection failed", "service": "database", "error": "Connection timeout", "trace_id": "jkl012"}
+{"timestamp": "2024-01-15T10:30:20Z", "level": "info", "message": "Request completed", "service": "web-server", "duration": "150ms", "status": "200", "trace_id": "def456"}
+{"timestamp": "2024-01-15T10:30:25Z", "level": "critical", "message": "System overload detected", "service": "load-balancer", "cpu_usage": "95%", "trace_id": "mno345"}

@@ -1,6 +1,6 @@
 {
-  "name": "vscode-opentelemetry-viewer",
-  "displayName": "OpenTelemetry Log Viewer",
+  "name": "vscode-opentelemetry-viewer-dev",
+  "displayName": "OpenTelemetry Log Viewer (Dev)",
   "description": "Simple grid viewer for reading open telemetry logs",
   "publisher": "Tobias-Streng",
   "license": "Apache-2.0",
@@ -56,6 +56,21 @@
           "group": "navigation"
         }
       ]
+    },
+    "configuration": {
+      "title": "OpenTelemetry Viewer",
+      "properties": {
+        "opentelemetryViewer.theme": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "light",
+            "dark"
+          ],
+          "default": "auto",
+          "description": "Theme for the OpenTelemetry viewer. 'auto' follows VS Code's theme, 'light' forces light theme, 'dark' forces dark theme."
+        }
+      }
     }
   },
   "scripts": {
@@ -69,13 +84,17 @@
     "watch-tests": "tsc -p ./ -w",
     "pretest": "npm run compile-tests && npm run lint",
     "lint": "eslint src",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./dist/test/runTest.js",
+    "test:unit": "npm run compile-tests && mocha --ui tdd --timeout 10000 --colors dist/test/suite/*.test.js"
   },
   "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/jsdom": "^21.1.7",
     "@types/mocha": "^10.0.10",
     "@types/node": "^20.17.30",
     "@types/react": "^19.1.1",
     "@types/react-dom": "^19.1.2",
+    "@types/sinon": "^17.0.4",
     "@types/vscode": "^1.85.0",
     "@typescript-eslint/eslint-plugin": "^8.28.0",
     "@typescript-eslint/parser": "^8.28.0",
@@ -84,6 +103,8 @@
     "@vscode/test-electron": "^2.4.1",
     "@vscode/vsce": "^3.3.2",
     "eslint": "^9.23.0",
+    "jsdom": "^26.1.0",
+    "sinon": "^21.0.0",
     "ts-loader": "^9.5.2",
     "typescript": "^5.8.3",
     "vite": "^6.2.6"

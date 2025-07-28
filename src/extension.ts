@@ -84,6 +84,23 @@ export function activate(context: vscode.ExtensionContext) {
           )
         : null;
 
+      // Get theme configuration
+      const config = vscode.workspace.getConfiguration('opentelemetryViewer');
+      const themeConfig = config.get<string>('theme', 'auto');
+
+      // Determine the actual theme to use
+      let isDarkTheme = false;
+      if (themeConfig === 'dark') {
+        isDarkTheme = true;
+      } else if (themeConfig === 'light') {
+        isDarkTheme = false;
+      } else {
+        // Auto mode - detect VS Code theme
+        const currentTheme = vscode.window.activeColorTheme;
+        isDarkTheme = currentTheme.kind === vscode.ColorThemeKind.Dark ||
+                      currentTheme.kind === vscode.ColorThemeKind.HighContrast;
+      }
+
       const nonce = getNonce();
 
       panel.webview.html = `
@@ -112,11 +129,15 @@ export function activate(context: vscode.ExtensionContext) {
     </html>
   `;
 
-      // Send logs to the webview after it's ready
+      // Send logs and theme to the webview after it's ready
       panel.webview.onDidReceiveMessage((msg) => {
         if (msg.type === "ready") {
-          console.log("[EXT] Webview is ready. Sending logs...");
-          panel.webview.postMessage({ type: "loadLogs", payload: logData });
+          console.log("[EXT] Webview is ready. Sending logs and theme...");
+          panel.webview.postMessage({
+            type: "loadLogs",
+            payload: logData,
+            theme: isDarkTheme ? 'dark' : 'light'
+          });
         }
       });
     }
