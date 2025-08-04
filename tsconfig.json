@@ -10,13 +10,16 @@
 		"outDir": "dist",
 		"strict": true,
 		"types": [
-			"node"
+			"node",
+			"mocha",
+			"vscode"
 		],
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true
 	},
 	"include": [
-		"src/extension.ts"
+		"src/extension.ts",
+		"src/test/**/*"
 	]
 }
