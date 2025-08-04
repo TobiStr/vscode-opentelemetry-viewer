@@ -27,12 +27,15 @@ npm run test:unit
 ```
 
 ### Manual Testing
+
+**Note: Make sure you've disabled the public plugin otherwise there will be a conflict.**
+
 1. Open VS Code
 2. Go to Debug panel (Cmd+Shift+D)
 3. Select "Run Extension"
 4. Press F5 to launch Extension Development Host
 5. Open `src/test/fixtures/test-logs.jsonl`
-6. Click "OpenTelemetry Viewer (Dev)" button
+6. Click "OpenTelemetry Viewer" button
 7. Test theme settings in VS Code settings
 
 ## Test Coverage
