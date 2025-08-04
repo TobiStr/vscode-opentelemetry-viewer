@@ -1,0 +1,4 @@
+--ui tdd
+--timeout 10000
+--colors
+--recursive

@@ -10,6 +10,8 @@ import {
   ColumnAutoSizeModule,
   RowStyleModule,
   themeQuartz,
+  colorSchemeDark,
+  colorSchemeLight,
   RowStyle,
   RowClassParams,
   SizeColumnsToContentStrategy,
@@ -42,9 +44,16 @@ export default function App() {
 
   const [rowData, setRowData] = useState<any[]>([]);
   const [columnDefs, setColumnDefs] = useState<any[]>([]);
+  const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
   const gridRef = useRef<AgGridReact>(null);
+
+  // Create theme based on current theme state
+  const currentTheme = isDarkTheme
+    ? themeQuartz.withPart(colorSchemeDark)
+    : themeQuartz.withPart(colorSchemeLight);
+
   const gridOptions: GridOptions = {
-    theme: themeQuartz,
+    theme: currentTheme,
   };
 
   const [visibleColumns, setVisibleColumns] = useState<string[]>([]);
@@ -54,6 +63,12 @@ export default function App() {
       if (event.data?.type === "loadLogs") {
         console.log("[WEBVIEW] Message received:", event.data);
         const data = event.data.payload;
+        const theme = event.data.theme;
+
+        // Update theme state
+        if (theme) {
+          setIsDarkTheme(theme === 'dark');
+        }
 
         setRowData(data);
         if (data.length > 0) {
@@ -110,11 +125,33 @@ export default function App() {
     return () => window.removeEventListener("message", listener);
   }, []);
 
+  // Container styles that adapt to theme
+  const containerStyle = {
+    height: "100vh",
+    width: "100%",
+    backgroundColor: isDarkTheme ? "#1e1e1e" : "#ffffff",
+    color: isDarkTheme ? "#ffffff" : "#000000"
+  };
+
+  const controlsStyle = {
+    padding: 10,
+    display: "flex",
+    flexWrap: "wrap" as const,
+    gap: 10,
+    backgroundColor: isDarkTheme ? "#2d2d2d" : "#f5f5f5",
+    borderBottom: `1px solid ${isDarkTheme ? "#404040" : "#e0e0e0"}`
+  };
+
+  const labelStyle = {
+    fontSize: "12px",
+    color: isDarkTheme ? "#ffffff" : "#000000"
+  };
+
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
-      <div style={{ padding: 10, display: "flex", flexWrap: "wrap", gap: 10 }}>
+    <div style={containerStyle}>
+      <div style={controlsStyle}>
         {columnDefs.map((col) => (
-          <label key={col.colId} style={{ fontSize: "12px" }}>
+          <label key={col.colId} style={labelStyle}>
             <input
               type="checkbox"
               checked={visibleColumns.includes(col.colId)}
@@ -154,11 +191,17 @@ export default function App() {
                 )
               )
             ) {
-              return { backgroundColor: "#ffe5e5" }; // light red
+              // Error row styling - adapt to theme
+              return {
+                backgroundColor: isDarkTheme ? "#4a1a1a" : "#ffe5e5"
+              };
             }
 
             if (values.some((v) => ["warn", "warning"].includes(v))) {
-              return { backgroundColor: "#fff8dc" }; // light yellow
+              // Warning row styling - adapt to theme
+              return {
+                backgroundColor: isDarkTheme ? "#4a3a1a" : "#fff8dc"
+              };
             }
 
             return undefined;
@@ -171,7 +214,12 @@ export default function App() {
           }}
         />
       ) : (
-        <div style={{ padding: 20 }}>Loading...</div>
+        <div style={{
+          padding: 20,
+          color: isDarkTheme ? "#ffffff" : "#000000"
+        }}>
+          Loading...
+        </div>
       )}
     </div>
   );
